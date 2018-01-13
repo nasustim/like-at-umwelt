@@ -1,6 +1,7 @@
 # coding: utf-8
 
-from flask import Flask, render_template, Response
+from flask import Flask, request, render_template, Response
+import json
 app = Flask(__name__)
 
 store = 0
@@ -15,7 +16,10 @@ def signage():
 
 @app.route("/post",methods=['POST'])
 def post():
-	get_json = request.json
+	global store
+	store = request
+	print(store)
+	return Response("json")
 
 def main():
 	app.run()

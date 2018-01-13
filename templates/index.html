@@ -4,7 +4,7 @@
 		<title>index</title>
 		<style>
 			body{
-				background: #cccccc;
+				background-color: #cccccc;
 			}
 			#ta-top{
 				margin: 10px;
@@ -28,13 +28,30 @@
 				font-style: italic;
 			}
 		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			function submit(){
+				let text = document.getElementById("ta-top").value;
+				$.ajax({
+					url: "post",
+					type: "POST",
+					dataType: "json",
+					data: JSON.stringify({
+						text: text
+					}),
+					success: (data)=>{
+						console.log("success");
+					},
+					error: (error)=>{
+						console.log("error");
+					}
+				});
+			};
+		</script>
 	</head>
 	<body>
 		<h1 id="title">IAMAS酒場</div>
 		<textarea id="ta-top"></textarea>
-		<div id="submit-bt">Submit</div>
+		<div id="submit-bt" onclick="submit();">Submit</div>
 	</body>
-	<script>
-		
-	</script>
 </html>
