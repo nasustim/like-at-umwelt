@@ -17,7 +17,7 @@ def signage():
 @app.route("/post",methods=['POST'])
 def post():
 	global store
-	store = request
+	store = request.json
 	print(store)
 	return Response("json")
 

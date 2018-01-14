@@ -2,23 +2,26 @@
 <html lang="ja">
 	<head>
 		<title>index</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			body{
 				background-color: #cccccc;
 			}
-			#ta-top{
+			#ta-top, #ta-id, .text-ta{
 				margin: 10px;
 				width: calc(100% - 20px);
+			}
+			#ta-top{
 				height: 400px;
 			}
-			#submit-bt{
+			#bt-submit{
 				margin: 10px;
 				background-color: #555555;
 				width: calc(100% - 20px); 
 				text-align: center;
 				color: white;
 			}
-			#submit-bt:hover{
+			#bt-submit:hover{
 				background-color: #aaaaaa;
 			}
 			#title{
@@ -36,6 +39,7 @@
 					url: "post",
 					type: "POST",
 					dataType: "json",
+					contentType: 'application/json',
 					data: JSON.stringify({
 						text: text
 					}),
@@ -50,8 +54,11 @@
 		</script>
 	</head>
 	<body>
-		<h1 id="title">IAMAS酒場</div>
+		<h1 id="title">IAMAS酒場</h1>
+		<div class="text-ta">どのお席の方へ？</div>
+		<input id="ta-id"></input>
+		<div class="text-ta">メッセージがあれば(オプション)</div>
 		<textarea id="ta-top"></textarea>
-		<div id="submit-bt" onclick="submit();">Submit</div>
+		<div id="bt-submit" onclick="submit();">イイネ <i class="fa fa-thumbs-up" aria-hidden="true"></i></div>
 	</body>
 </html>
