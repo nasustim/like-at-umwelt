@@ -1,10 +1,11 @@
 # coding: utf-8
 
-from flask import Flask, request, render_template, Response
+from flask import Flask, request, render_template, Response, jsonify
 import json
 app = Flask(__name__)
 
-store = 0
+obj = {}
+store = []
 
 @app.route("/")
 def root():
@@ -17,9 +18,22 @@ def signage():
 @app.route("/post",methods=['POST'])
 def post():
 	global store
-	store = request.data
-	print(store) 
+	store.append(request.data.decode("utf-8"))
+	
+	for i in store:
+		print(i)
+
 	return Response("json")
+
+@app.route("/get",methods=['GET'])
+def get():
+	global store
+	tmp = []
+	for i in store:
+		tmp_f = i.split(' - ')
+		tmp.append([tmp_f[0],tmp_f[1]])
+	store = []
+	return jsonify(tmp)
 
 def main():
 	app.run()

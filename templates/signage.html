@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<title>signage</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			let array = [];
+
+			let get = () =>{
+				$.ajax({
+					url: "get",
+					type: "POST",
+					dataType: "json",
+					contentType: 'application/json',
+					data: "post",
+					success: (data)=>{
+						console.log("success");
+					},
+					error: (error)=>{
+						console.log("error");
+					}
+				});
+			}
+
+			setInterval(get, 500);
+		</script>
+	</head>
+	<body>
+		<h1 id="title">IAMAS酒場</h1>
+		<canvas id="canvas"></canvas>
+	</body>
+</html>
