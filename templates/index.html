@@ -39,10 +39,8 @@
 					url: "post",
 					type: "POST",
 					dataType: "json",
-					contentType: 'application/json',
-					data: JSON.stringify({
-						text: text
-					}),
+					contentType: 'text/plain',
+					data: text,
 					success: (data)=>{
 						console.log("success");
 					},
