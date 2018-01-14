@@ -7,7 +7,7 @@
 			body{
 				background-color: #cccccc;
 			}
-			#ta-top, #ta-id, .text-ta{
+			#ta-top, #ta-id, .text-ta, #select-table{
 				margin: 10px;
 				width: calc(100% - 20px);
 			}
@@ -34,13 +34,14 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
 			function submit(){
+				let select = document.getElementById("select-table").value;
 				let text = document.getElementById("ta-top").value;
 				$.ajax({
 					url: "post",
 					type: "POST",
 					dataType: "json",
 					contentType: 'text/plain',
-					data: text,
+					data: select+" - "+text,
 					success: (data)=>{
 						console.log("success");
 					},
@@ -54,7 +55,12 @@
 	<body>
 		<h1 id="title">IAMAS酒場</h1>
 		<div class="text-ta">どのお席の方へ？</div>
-		<input id="ta-id"></input>
+		<!--<input id="ta-id"></input>-->
+		<select id="select-table">
+			<option value="1" selected>1番テーブル</option>
+			<option value="2">2番テーブル</option>
+			<option value="3">3番テーブル</option>
+		</select>
 		<div class="text-ta">メッセージがあれば(オプション)</div>
 		<textarea id="ta-top"></textarea>
 		<div id="bt-submit" onclick="submit();">イイネ <i class="fa fa-thumbs-up" aria-hidden="true"></i></div>
