@@ -13,12 +13,15 @@
 			let get = () =>{
 				$.ajax({
 					url: "get",
-					type: "POST",
+					type: "GET",
 					dataType: "json",
 					contentType: 'application/json',
-					data: "post",
+					data: "get",
 					success: (data)=>{
-						console.log("success");
+						for(let i in data){
+							console.log(data[i][0]+": "+data[i][1])
+						}
+						//console.log("success");
 					},
 					error: (error)=>{
 						console.log("error");
