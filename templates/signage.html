@@ -32,12 +32,7 @@
 						console.log("error");
 					}
 				});
-			}
-
-			let render = () =>{
-
 			};
-
 			setInterval(get, 500);
 		</script>
 	</head>
@@ -49,7 +44,35 @@
 		$("#canvas").get(0).width = $(window).width();
 		$("#canvas").get(0).height = $(window).height();
 
-		let canvas = document.getElementById("canvas");
-		let context = canvas.getContext("2d");
+		let w = $("#canvas").width();
+		let h = $("#canvas").height();
+		//let w = 300;
+		//let h = 300;
+
+		let canvas;
+		let ctx;
+
+		let tables = [{},{},{}];
+
+		let setup = () =>{
+			canvas = document.getElementById("canvas");
+			ctx = canvas.getContext("2d");
+
+			for(let i in tables){
+				tables[i].x = w / 2;
+				tables[i].y = ( h / 4 ) * (i + 1);
+			}
+			for(let i in tables){
+				ctx.beginPath();
+  				ctx.arc(tables[i].x,tables[i].y, 80, 0, Math.PI*2, false);
+  				ctx.stroke();
+			}
+		};
+
+		setup();
+
+		let render = () =>{
+
+		};
 	</script>
 </html>
