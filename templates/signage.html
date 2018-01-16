@@ -61,15 +61,26 @@
 		let h = $("#canvas").height();
 
 		let tables = [{},{},{}];
+		let circle = [0,0,0];
+		for(let i in tables){
+			tables[i].x = w / 4 * i + w / 4;
+			tables[i].y = h / 2;
+		}
 
-		let setup = () =>{
+		let cvs = document.getElementById("canvas");
+		let two = new Two({
+			type: Two.Types["svg"],
+			width: w,
+			height: h,
+		}).appendTo(cvs);
 
-		};
+		two.bind('update', () => {
+			for(let i in circle){
+				circle[i] = two.makeCircle(tables[i].x, tables[i].y, 100);
+				circle[i].fill = '#999999';
 
-		setup();
-
-		let render = () =>{
-
-		};
+				//circle[i].translation.set(two.width / 2, two.height / 2);
+			}
+		}).play();
 	</script>
 </html>
