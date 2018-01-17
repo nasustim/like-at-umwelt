@@ -31,10 +31,17 @@
 				background-color: #ffff00;
 				border-radius: 50px;
 			}
+			.like1, .like2, .like3{
+				position: absolute;
+				/*display: none;*/
+			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
+
+			let tables = [{},{},{}];
 			let array = [];
+
 
 			let get = () =>{
 				$.ajax({
@@ -48,7 +55,25 @@
 							console.log(data[i][0]+": "+data[i][1]);
 							array.push(data[i]);
 						}
-						//console.log("success");
+						for(let j in array){
+							//console.log(array[j][0]);
+							if(array[j][0] === "1" || array[j][0] === 1){
+								$(".like1").show();
+							}else if(array[j][0] === "2" || array[j][0] === 2){
+								$(".like2").show();
+							}else if(array[j][0] === "3" || array[j][0] === 3){
+								$(".like3").show();
+							}
+						}
+
+						array = [];
+
+						/*
+						setTimeout(()=>{
+							$(".like1 .like2 .like3").css({
+								display: "none"
+							});
+						},2000);*/
 					},
 					error: (error)=>{
 						console.log("error");
@@ -61,20 +86,15 @@
 	<body>
 		<h1 id="title">IAMAS酒場</h1>
 		<div id="canvas"></div>
-		<div id="table1">1</div>
-		<div id="table2">2</div>
-		<div id="table3">3</div>
+		<div id="table1">1</div><span class="like1">LIKE</span>
+		<div id="table2">2</div><span class="like2">LIKE</span>
+		<div id="table3">3</div><span class="like3">LIKE</span>
 	</body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/jquery.balloon.js"></script>
-<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/two.js/0.6.0/two.min.js"></script>
-	--><script>
+	<script>
 
 		let w = $("#canvas").width();
 		let h = $("#canvas").height();
 
-		let tables = [{},{},{}];
-		let circle = [0,0,0];
 		for(let i in tables){
 			tables[i].x = (w / 4 * i + w / 4) - 50;
 			tables[i].y = (h / 2) - 50;
@@ -92,41 +112,28 @@
 			top: tables[2].y,
 			left: tables[2].x
 		});
+		$(".like1").css({
+			top: tables[0].y - 50,
+			left: tables[0].x + 50
+		});
+		$(".like2").css({
+			top: tables[1].y - 50,
+			left: tables[1].x + 50
+		});
+		$(".like3").css({
+			top: tables[2].y - 50,
+			left: tables[2].x + 50
+		});
 
 
 
-		//$("#canvas").get(0).width = $(window).width();
-		//$("#canvas").get(0).height = $(window).height();
+		$(".like1").hide();
+		$(".like2").hide();
+		$(".like3").hide();
 
+	//	$("#like1 like2 like3").css({
 
+	//	});
 
-
-
-/*
-		let w = $("#canvas").width();
-		let h = $("#canvas").height();
-
-		let tables = [{},{},{}];
-		let circle = [0,0,0];
-		for(let i in tables){
-			tables[i].x = w / 4 * i + w / 4;
-			tables[i].y = h / 2;
-		}
-
-		let cvs = document.getElementById("canvas");
-		let two = new Two({
-			type: Two.Types["svg"],
-			width: w,
-			height: h,
-		}).appendTo(cvs);
-
-		two.bind('update', () => {
-			for(let i in circle){
-				circle[i] = two.makeCircle(tables[i].x, tables[i].y, 100);
-				circle[i].fill = '#999999';
-
-				//circle[i].translation.set(two.width / 2, two.height / 2);
-			}
-		}).play();*/
 	</script>
 </html>
