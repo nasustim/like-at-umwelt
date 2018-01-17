@@ -59,10 +59,19 @@
 							//console.log(array[j][0]);
 							if(array[j][0] === "1" || array[j][0] === 1){
 								$(".like1").show();
+								setTimeout(()=>{
+									$(".like1").fadeOut("slow");
+								},2000);
 							}else if(array[j][0] === "2" || array[j][0] === 2){
 								$(".like2").show();
+								setTimeout(()=>{
+									$(".like2").fadeOut("slow");
+								},2000);
 							}else if(array[j][0] === "3" || array[j][0] === 3){
 								$(".like3").show();
+								setTimeout(()=>{
+									$(".like3").fadeOut("slow");
+								},2000);
 							}
 						}
 
