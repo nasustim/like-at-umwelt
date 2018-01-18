@@ -30,8 +30,8 @@ def get():
 	global store
 	tmp = []
 	for i in store:
-		tmp_f = i.split(' - ')
-		tmp.append([tmp_f[0],tmp_f[1]])
+		#tmp_f = i.split(' - ')
+		tmp.append(i)
 	store = []
 	return jsonify(tmp)
 
