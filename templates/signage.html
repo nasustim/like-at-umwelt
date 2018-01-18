@@ -32,6 +32,7 @@
 				border-radius: 50px;
 			}
 			.like1, .like2, .like3{
+				font-size: 50px;
 				position: absolute;
 				/*display: none;*/
 			}
@@ -95,9 +96,12 @@
 	<body>
 		<h1 id="title">IAMAS酒場</h1>
 		<div id="canvas"></div>
-		<div id="table1">1</div><span class="like1">LIKE</span>
-		<div id="table2">2</div><span class="like2">LIKE</span>
-		<div id="table3">3</div><span class="like3">LIKE</span>
+		<div id="table1">1</div>
+		<span class="like1"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+		<div id="table2">2</div>
+		<span class="like2"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+		<div id="table3">3</div>
+		<span class="like3"><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
 	</body>
 	<script>
 
@@ -122,16 +126,16 @@
 			left: tables[2].x
 		});
 		$(".like1").css({
-			top: tables[0].y - 50,
-			left: tables[0].x + 50
+			top: tables[0].y - 100,
+			left: tables[0].x + 100
 		});
 		$(".like2").css({
-			top: tables[1].y - 50,
-			left: tables[1].x + 50
+			top: tables[1].y - 100,
+			left: tables[1].x + 100
 		});
 		$(".like3").css({
-			top: tables[2].y - 50,
-			left: tables[2].x + 50
+			top: tables[2].y - 100,
+			left: tables[2].x + 100
 		});
 
 
