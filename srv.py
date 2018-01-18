@@ -36,7 +36,9 @@ def get():
 	return jsonify(tmp)
 
 def main():
-	app.run()
+	app.run(port=5000)
 
 if __name__ == "__main__":
 	main()
+
+	# LIFE_MAC_20のMacBook Pro
